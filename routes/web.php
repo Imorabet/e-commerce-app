@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [CategoryController::class ,'index']);
+Route::fallback(function () {
+    return response()->view('errors', [], 404);
+});
+Route::get('/products',function(){
+    return view('products');
 });
