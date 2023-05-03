@@ -41,7 +41,7 @@
                         <div class="relative">
                             <label for="UserEmail"
                                 class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-purple-700 dark:border-gray-700">
-                                <input type="email" id="UserEmail" placeholder="Email" name="email"
+                                <input type="email" required id="UserEmail" placeholder="Email" name="email"
                                     class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 dark:text-white sm:text-sm" />
 
                                 <span
@@ -53,7 +53,7 @@
                         <div class="mt-8 content-center">
                             <label for="UserEmail"
                                 class="relative block overflow-hidden border-b border-gray-200 bg-transparent pt-3 focus-within:border-purple-700 dark:border-gray-700">
-                                <input type="password" id="UserEmail" placeholder="Password" name="password"
+                                <input type="password" id="UserEmail" placeholder="Password" name="password" required
                                     class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 dark:text-white sm:text-sm" />
 
                                 <span
@@ -75,21 +75,11 @@
                                 up</a>
                         </p>
                     </form>
-                    <div>
-                        @if ($errors->any())
-                            <div class="bg-red-300">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')   
 </body>
 
 </html>

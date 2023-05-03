@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Category;
 use App\Models\Product;

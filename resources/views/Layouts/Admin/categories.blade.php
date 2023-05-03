@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/bd9b5a24ba.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @vite('resources/css/app.css')
     <title>MegaShop</title>
     
@@ -68,12 +69,10 @@
                                         <td class="px-4 py-3 text-sm">{{ $category->products->count() }}</td>
                                      
                                         <td class="flex px-4 py-3 text-sm gap-2">
-                                            <form action="{{ route('category.delete', ['id' => $category->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                            </form>
+                                                <a href="{{ url('/delete-category',$category->id) }}" onclick="confirmation(event)" ><i class="fa-solid fa-trash"></i></a>
+                                            
                                             <button><i class="fa-solid fa-pen-to-square"></i></button>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
@@ -85,6 +84,26 @@
 
         </div>
     </div>
+    
+    @include('sweetalert::alert') 
+    <script>
+        function confirmation(e){
+            e.preventDefault()
+            var urlOfIt=e.currentTarget.getAttribute('href')
+            console.log(urlOfIt)
+            swal({
+                title:'Are you sure?',
+                text:'once gone you won\'t be able to retrieve infos about this category',
+                icon:'warning',
+                buttons:true,
+                dangerMode:true,
+            }).then((willCancel)=>{
+                if(willCancel){
+                    window.location.href=urlOfIt
+                }
+            })
+        }
+        </script>  
 </body>
 
 </html>

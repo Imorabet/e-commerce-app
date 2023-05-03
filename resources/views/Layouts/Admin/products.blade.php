@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @vite('resources/css/app.css')
     <title>MegaShop</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Fonts -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -70,11 +70,8 @@
                                             <p class="font-semibold "> {{ $product->category->name }} </p>
                                         </td>
                                         <td class="flex px-4 py-3 text-sm gap-2">
-                                            <form action="{{ route('product.delete', ['id' => $product->id]) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                                            </form>
+                                                <a href="{{ url('/delete-product',$product->id) }}" onclick="confirmation(e)"><i class="fa-solid fa-trash"></i></a>
+                                      
                                             <button><i class="fa-solid fa-pen-to-square"></i></button>
                                         </td>
                                     </tr>
@@ -87,6 +84,26 @@
 
         </div>
     </div>
+    @include('sweetalert::alert')   
+    
+    <script>
+        function confirmation(e){
+            e.preventDefault()
+            var urlOfIt=e.currentTarget.getAttribute('href')
+            console.log(urlOfIt)
+            swal({
+                title:'Are you sure?',
+                text:'once gone you won\'t be able to retrieve infos about this category',
+                icon:'warning',
+                buttons:true,
+                dangerMode:true,
+            }).then((willCancel)=>{
+                if(willCancel){
+                    window.location.href=urlOfIt
+                }
+            })
+        }
+        </script>  
 </body>
 
 </html>

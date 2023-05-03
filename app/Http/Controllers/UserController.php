@@ -28,7 +28,7 @@ class UserController extends Controller
         ]);
         $user->save();
 
-        return view('Auth.login');
+        return redirect()->route('login.n')->withToastSuccess('Account created successfully!');
     }
     public function login(Request $request)
     {
@@ -41,18 +41,16 @@ class UserController extends Controller
             $user = Auth::user();
 
           if ($user->type === 'admin') {
-                return redirect()->route('admin.dashboard')->with('user', $user);
+                return redirect()->route('admin.dashboard')->with('user', $user)->withToastSuccess('Welcome back!');
             } else {
-                return redirect()->route('welcome')->with('user', $user);
+                return redirect()->route('welcome')->with('user', $user)->with('user', $user)->withToastSuccess('Welcome back Dear client!');
             }
         } else {
-            return redirect()->route('login.n')
-                ->withErrors(['email' => 'Invalid credentials'])
-                ->withInput();
-        }
-    }
+            return redirect()->route('login.n')->with('toast_error', 'Invalid credentials')->withInput();
+    }}
     public function logout(Request $request)
     {
+        
         Auth::logout();
 
         $request->session()->invalidate();
