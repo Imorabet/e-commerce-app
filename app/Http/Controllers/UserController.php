@@ -41,9 +41,9 @@ class UserController extends Controller
             $user = Auth::user();
 
           if ($user->type === 'admin') {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.dashboard')->with('user', $user);
             } else {
-                return redirect()->route('client.dashboard');
+                return redirect()->route('welcome')->with('user', $user);
             }
         } else {
             return redirect()->route('login.n')

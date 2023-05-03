@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ Route::fallback(function () {
 });
 Route::get('/products',
 [ProductController::class ,'index']);
+
 Route::get('/login',function(){
     return view('Auth.login');
 })->name('login.n');
@@ -35,3 +37,16 @@ Route::get('/admin',function(){
     return view('Layouts.Admin.dashboard');
 })->middleware('auth')->name('admin.dashboard');
 Route::get('/logout',[UserController::class,'logout']);
+
+Route::get('/all-products',[ProductController::class,'getProducts'])->middleware('auth')->name('product.all');
+Route::get('/add-product',[ProductController::class,'getCategories'])->middleware('auth');
+Route::post('/add-product',[ProductController::class,'add'])->middleware('auth')->name('product.add');
+Route::delete('/delete-product/{id}',[ProductController::class,'destroy'])->middleware('auth')->name('product.delete');
+
+Route::get('/add-category',function(){
+    return view('Layouts.Admin.addCategory');
+})->middleware('auth');
+Route::get('/all-categories',[CategoryController::class,'getCategories'])->middleware('auth')->name('category.all');
+Route::post('/add-category',[CategoryController::class,'add'])->middleware('auth')->name('category.add');
+Route::delete('/delete-category/{id}',[CategoryController::class,'destroy'])->middleware('auth')->name('category.delete');
+

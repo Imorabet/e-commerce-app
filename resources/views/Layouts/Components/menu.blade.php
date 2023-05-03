@@ -27,6 +27,9 @@
                     
                 </ul>
             </div>
+            <div id="cart-content">
+                <!-- Shopping cart content goes here -->
+            </div>
         </div>
     </nav>
 </header>
