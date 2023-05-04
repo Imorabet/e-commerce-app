@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/bd9b5a24ba.js" crossorigin="anonymous"></script>
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>MegaShop</title>
 
     <!-- Fonts -->
@@ -30,30 +30,28 @@
                         <span class="self-center text-xl font-bold whitespace-nowrap dark:text-white">MegaShop</span>
                     </a>
                     <div class="flex items-center gap-3 lg:order-2">
-                        <!-- <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> -->
-                        <a href="#" class="text-white hover:text-gray-200" id="cart-button"><i
+                        <a href="/cart" class="text-white hover:text-purple-500" id="cart-button"><i
                                 class="fas fa-shopping-cart fa-lg"></i></a>
-
-                        @section('scripts')
-                            <script>
-                                $(document).ready(function() {
-                                    $('#cart-button').click(function(e) {
-                                        e.preventDefault();
-                                        Swal.fire({
-                                            title: 'Shopping cart',
-                                            html: $('#cart-content').html(),
-                                            showCloseButton: true,
-                                            showConfirmButton: false,
-                                            customClass: 'sweet-alert-overflow',
-                                            scrollbarPadding: false
-                                        });
-                                    });
-                                });
-                            </script>
-                        @endsection
-
-                        <a href="/logout" class="text-white hover:text-gray-200"><i
-                                class="fa-solid fa-user fa-lg"></i></a>
+                        <li>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                                class="text-gray-700 dark:text-white hover:text-purple-500 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-purple-500 md:p-0 font-medium relative inline-block text-left w-full md:w-auto">
+                                <i class="fa-solid fa-bars fa-lg"></i></button>
+                            <!-- Dropdown menu -->
+                            <div id="dropdownNavbar"
+                                class="hidden bg-white text-gray-700 dark:bg-gray-800 text-base z-10 list-none dark:text-white divide-y divide-gray-900 rounded shadow my-4 w-44">
+                                <ul class="py-1" aria-labelledby="dropdownLargeButton">
+                                    
+                                    <li>
+                                        <a href="/orders"
+                                            class="text-sm hover:bg-gray-100 text-gray-700  dark:text-gray-300 hover:text-gray-700 block px-4 py-2">Your orders</a>
+                                    </li>
+                                </ul>
+                                <div class="py-1">
+                                    <a href="/logout"
+                                        class="text-sm hover:bg-gray-100 text-gray-700 dark:text-gray-300 hover:text-gray-700  block px-4 py-2">Sign out</a>
+                                </div>
+                            </div>
+                        </li>
                     </div>
                     <div class="items-center justify-between  w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
@@ -79,7 +77,7 @@
                     </div>
                 </div>
             </nav>
-           
+
         </header>
     @endif
     <section class="bg-white dark:bg-gray-900">
@@ -208,11 +206,11 @@
                             </h3>
                             <p class="mt-1.5 text-sm text-gray-500 dark:text-gray-400 md:text-lg">{{ $product->price }}
                                 $</p>
-                            <form class="mt-4">
-                                <button
+                            <form action="{{ url('/cart/add/' . $product->id) }}" method="POST" class="mt-4">
+                                @csrf
+                                <button type="submit"
                                     class="block w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800 p-4 transition hover:scale-105">Add
-                                    to Cart
-                                </button>
+                                    to Cart</button>
                             </form>
                         </div>
                     </a>
@@ -220,9 +218,11 @@
             </div>
         </div>
     </section>
-   
+
     @component('Layouts.Components.footer')
     @endcomponent
+    @include('sweetalert::alert')
+
 </body>
 <script>
     const form = document.getElementById('search-form');
@@ -244,5 +244,7 @@
         });
     });
 </script>
+<script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
+
 
 </html>

@@ -406,28 +406,55 @@
                 </a>
                 <div class="flex items-center gap-3 lg:order-2">
                     <!-- <a href="#" class="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a> -->
-                    <a href="" class="text-white hover:text-gray-200"><i class="fas fa-shopping-cart fa-lg"></i></a>
-                    <a href="/logout" class="text-white hover:text-gray-200"><i class="fa-solid fa-user fa-lg"></i></a>
+                    <a href="/cart" class="text-white hover:text-purple-500" id="cart-button"><i
+                            class="fas fa-shopping-cart fa-lg"></i></a>
+
+                    <li>
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                            class="text-gray-700 dark:text-white hover:text-purple-500 border-b border-gray-100 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-purple-500 md:p-0 font-medium relative inline-block text-left w-full md:w-auto">
+                            <i class="fa-solid fa-bars fa-lg"></i></button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar"
+                            class="hidden bg-white text-gray-700 dark:bg-gray-800 text-base z-10 list-none dark:text-white divide-y divide-gray-900 rounded shadow my-4 w-44">
+                            <ul class="py-1" aria-labelledby="dropdownLargeButton">
+                                
+                                <li>
+                                    <a href="/orders"
+                                        class="text-sm hover:bg-gray-100 text-gray-700  dark:text-gray-300 hover:text-gray-700 block px-4 py-2">Your orders</a>
+                                </li>
+                            </ul>
+                            <div class="py-1">
+                                <a href="/logout"
+                                    class="text-sm hover:bg-gray-100 text-gray-700 dark:text-gray-300 hover:text-gray-700  block px-4 py-2">Sign out</a>
+                            </div>
+                        </div>
+                    </li>
                 </div>
                 <div class="items-center justify-between  w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
                     <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                         <li>
-                            <a href="/" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" aria-current="page">Home</a>
+                            <a href="/"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
+                                aria-current="page">Home</a>
                         </li>
                         <li>
-                            <a href="products" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Products</a>
+                            <a href="products"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Products</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                            <a href="#"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                            <a href="#"
+                                class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
     @endif
     <section
@@ -537,6 +564,8 @@
     @endcomponent
 
     @include('sweetalert::alert')   
+    <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
+
 </body>
 
 </html>

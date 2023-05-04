@@ -85,7 +85,7 @@
         </div>
     </div>
     @include('sweetalert::alert')   
-    
+
     <script>
         function confirmation(e){
             e.preventDefault()
@@ -93,7 +93,7 @@
             console.log(urlOfIt)
             swal({
                 title:'Are you sure?',
-                text:'once gone you won\'t be able to retrieve infos about this category',
+                text:'once gone you won\'t be able to retrieve infos about this product',
                 icon:'warning',
                 buttons:true,
                 dangerMode:true,
