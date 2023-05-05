@@ -28,7 +28,7 @@
                 @else
                     @foreach ($items as $item)
                         <div
-                            class="justify-between mb-6 rounded-lg bg-white dark:bg-gray-900 p-6 shadow-md sm:flex sm:justify-start h-2/3">
+                            class="justify-between mb-6 rounded-lg bg-white dark:bg-gray-900 p-6 shadow-md sm:flex sm:justify-start h-[170px]">
                             <img src="{{ asset('storage/' . $item->product->img) }}" alt="product-image"
                                 class="w-[50%] rounded-lg sm:w-40" />
                             <form class="sm:ml-4 sm:flex sm:w-full sm:justify-between" method="POST"

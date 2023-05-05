@@ -108,7 +108,7 @@
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <div>
-                                        <p class="font-semibold">{{ $x = +1 }}</p>
+                                        <p class="font-semibold">{{ $x=$x+1 }}</p>
                                     </div>
                                 </div>
                             </td>
