@@ -10,9 +10,11 @@ class CartController extends Controller
 {
     public function getItems()
     {
-        $items = Cart::all();
+        $user = auth()->user();
+        $items = Cart::where('id_users', $user->id)->get();
         return view('Layouts.Client.cart', ['items' => $items]);
     }
+    
     public function add($id)
     {
         $product = Product::findOrFail($id);

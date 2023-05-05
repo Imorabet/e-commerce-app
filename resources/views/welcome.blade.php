@@ -523,8 +523,9 @@
                     <div class="relative  bg-gray-50 dark:bg-gray-800 p-6">
                       <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-white">{{$product->name}}</h3>
                       <p class="mt-1.5 text-sm text-gray-500 dark:text-gray-400 md:text-lg">{{$product->price}} $</p>
-                      <form class="mt-4">
-                        <button
+                      <form action="{{ url('/cart/add/' . $product->id) }}" method="POST" class="mt-4">
+                        @csrf
+                        <button type="submit"
                           class="block w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800 p-4 transition hover:scale-105"
                         >Add to Cart
                         </button>

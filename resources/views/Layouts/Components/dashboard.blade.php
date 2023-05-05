@@ -49,7 +49,7 @@ class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dar
             </a>
         </li>
         <li>
-            <a href="#"
+            <a href="/all-orders"
                 class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-purple-800 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
                 <span class="inline-flex justify-center items-center ml-4">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"

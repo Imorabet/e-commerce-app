@@ -60,5 +60,8 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->middleware(['auth
 Route::get('/cart-item-delete/{id}',[CartController::class,'destroy'])->middleware(['auth'])->name('cartItem.delete');
 Route::put('cart-confirm-quantity/{id}',[CartController::class,'update'])->middleware('auth')->name('quantity.update');
 
-Route::post('/order-add',[OrderController::class,'store'])->middleware('auth')->name('orders.store');
+Route::get('/orders',[OrderController::class,'getOrders'])->middleware(['auth'])->name('order.all');
+Route::get('/all-orders',[OrderController::class,'getAllOrders'])->middleware(['auth','admin']);
+Route::post('/order-add',[OrderController::class,'placeOrder'])->middleware('auth')->name('orders.store');
+
 

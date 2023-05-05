@@ -28,10 +28,11 @@
                 @else
                     @foreach ($items as $item)
                         <div
-                            class="justify-between mb-6 rounded-lg bg-white dark:bg-gray-900 p-6 shadow-md sm:flex sm:justify-start h-[39%]">
+                            class="justify-between mb-6 rounded-lg bg-white dark:bg-gray-900 p-6 shadow-md sm:flex sm:justify-start h-2/3">
                             <img src="{{ asset('storage/' . $item->product->img) }}" alt="product-image"
                                 class="w-[50%] rounded-lg sm:w-40" />
-                            <form class="sm:ml-4 sm:flex sm:w-full sm:justify-between" method="POST" action="{{route('quantity.update', $item->id)}}">
+                            <form class="sm:ml-4 sm:flex sm:w-full sm:justify-between" method="POST"
+                                action="{{ route('quantity.update', $item->id) }}">
                                 @method('PUT')
                                 @csrf
                                 <div class="mt-5 sm:mt-0">
@@ -57,15 +58,17 @@
                                         <p class="text-sm dark:text-gray-400 price"
                                             value="{{ $item->product->price * $item->quantity }}">
                                             {{ $item->product->price * $item->quantity }} $</p>
-                                        <a href="{{route('cartItem.delete',['id' => $item->id])}}"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor"
-                                            class="h-5 w-5 cursor-pointer dark:text-white duration-150 hover:text-red-500 remove-item"
-                                            data-item-id="{{ $item->id }}">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M6 18L18 6M6 6l12 12" />
-                                        </svg></a>
+                                        <a href="{{ route('cartItem.delete', ['id' => $item->id]) }}"><svg
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor"
+                                                class="h-5 w-5 cursor-pointer dark:text-white duration-150 hover:text-red-500 remove-item"
+                                                data-item-id="{{ $item->id }}">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18L18 6M6 6l12 12" />
+                                            </svg></a>
                                     </div>
-                                    <button type="submit" class="text-white bg-purple-700 capitalize hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">confirm</button>
+                                    <button type="submit"
+                                        class="text-white bg-purple-700 capitalize hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">confirm</button>
                                 </div>
                             </form>
                         </div>
@@ -91,9 +94,12 @@
                         <p class="text-sm text-gray-700">including VAT</p>
                     </div>
                 </div>
-
-                <button
-                    class="mt-6 w-full rounded-md bg-purple-600 py-1.5 font-medium text-blue-50 hover:bg-purple-700">Order now</button>
+                <form action="{{route('orders.store')}}" method="post">
+                    @csrf
+                    <button
+                        class="mt-6 w-full rounded-md bg-purple-600 py-1.5 font-medium text-blue-50 hover:bg-purple-700">Order
+                        now</button>
+                </form>
             </div>
         </div>
     </div>
