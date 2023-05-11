@@ -32,6 +32,9 @@ Route::get('/login', function () {
     return view('Auth.login');
 })->name('login.n');
 Route::post('/login', [UserController::class, 'login'])->name('login.user');
+Route::get('/contact',function (){
+    return view('contact');
+});
 
 Route::get('/signup', function () {
     return view('Auth.signup');
@@ -63,5 +66,6 @@ Route::put('cart-confirm-quantity/{id}',[CartController::class,'update'])->middl
 Route::get('/orders',[OrderController::class,'getOrders'])->middleware(['auth'])->name('order.all');
 Route::get('/all-orders',[OrderController::class,'getAllOrders'])->middleware(['auth','admin']);
 Route::post('/order-add',[OrderController::class,'placeOrder'])->middleware('auth')->name('orders.store');
+
 
 

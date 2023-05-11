@@ -50,5 +50,5 @@ class CartController extends Controller
         $item->save();
         return redirect()->route('cart.all')->withToastSuccess('Quantity confirmed successfully');
         }
-    
-}
+        
+    }

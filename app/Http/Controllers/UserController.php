@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeEmail;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -27,6 +29,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         $user->save();
+        Mail::to($user->email)->send(new WelcomeEmail($user));
 
         return redirect()->route('login.n')->withToastSuccess('Account created successfully!');
     }
