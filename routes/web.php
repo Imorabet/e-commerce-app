@@ -49,6 +49,8 @@ Route::get('/all-products', [ProductController::class, 'getProducts'])->middlewa
 Route::get('/add-product', [ProductController::class, 'getCategories'])->middleware(['auth', 'admin']);
 Route::post('/add-product', [ProductController::class, 'add'])->middleware(['auth', 'admin'])->name('product.add');
 Route::get('/delete-product/{id}', [ProductController::class, 'destroy'])->middleware(['auth', 'admin'])->name('product.delete');
+Route::get('/edit-product/{id}', [ProductController::class,'edit'])->middleware(['auth', 'admin'])->name('product.edit');
+Route::put('/update-product/{id}',[ProductController::class,'update'])->middleware(['auth', 'admin'])->name('product.update');
 
 Route::get('/add-category', function () {
     return view('Layouts.Admin.addCategory');
@@ -56,6 +58,9 @@ Route::get('/add-category', function () {
 Route::get('/all-categories', [CategoryController::class, 'getCategories'])->middleware(['auth', 'admin'])->name('category.all');
 Route::post('/add-category', [CategoryController::class, 'add'])->middleware(['auth', 'admin'])->name('category.add');
 Route::get('/delete-category/{id}', [CategoryController::class, 'destroy'])->middleware(['auth', 'admin'])->name('category.delete');
+Route::get('/edit-category/{id}', [CategoryController::class,'edit'])->middleware(['auth', 'admin'])->name('category.edit');
+Route::put('/update-category/{id}',[CategoryController::class,'update'])->middleware(['auth', 'admin'])->name('category.update');
+
 
 Route::get('/cart', [CartController::class,'getItems']
 )->middleware(['auth'])->name('cart.all');

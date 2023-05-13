@@ -44,9 +44,9 @@ class UserController extends Controller
             $user = Auth::user();
 
           if ($user->type === 'admin') {
-                return redirect()->route('admin.dashboard')->with('user', $user)->withToastSuccess('Welcome back!');
+                return redirect()->route('admin.dashboard')->with('user', $user)->withToastSuccess('Welcome back '.$user->name.' !');
             } else {
-                return redirect()->route('welcome')->with('user', $user)->with('user', $user)->withToastSuccess('Welcome back Dear client!');
+                return redirect()->route('welcome')->with('user', $user)->with('user', $user)->withToastSuccess('Welcome back Dear '.$user->name.' !');
             }
         } else {
             return redirect()->route('login.n')->with('toast_error', 'Invalid credentials')->withInput();

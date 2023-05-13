@@ -71,7 +71,7 @@
                                         <td class="flex px-4 py-3 text-sm gap-2">
                                                 <a href="{{ url('/delete-category',$category->id) }}" onclick="confirmation(event)" ><i class="fa-solid fa-trash"></i></a>
                                             
-                                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                                            <a href="{{route('category.edit',['id'=>$category->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
                                             
                                         </td>
                                     </tr>

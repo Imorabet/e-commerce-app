@@ -72,7 +72,7 @@
                                         <td class="flex px-4 py-3 text-sm gap-2">
                                                 <a href="{{ url('/delete-product',$product->id) }}" onclick="confirmation(e)"><i class="fa-solid fa-trash"></i></a>
                                       
-                                            <button><i class="fa-solid fa-pen-to-square"></i></button>
+                                            <a href="{{route('product.edit',$product->id)}}"><i class="fa-solid fa-pen-to-square"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
