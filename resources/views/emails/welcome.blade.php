@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to My Site</title>
+    <title>Welcome to MegaShop</title>
 </head>
 <body>
     <h1>Welcome {{ $user->name }}!</h1>
