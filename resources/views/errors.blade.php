@@ -21,10 +21,6 @@
         </style>
     </head>
     <body class="antialiased">
-       <!--
-    Graphic from https://www.opendoodles.com/
--->
-
 <div class="grid w-full h-screen px-4 bg-white place-content-center dark:bg-gray-900">
     <div class="text-center">
       <svg
